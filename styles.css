@@ -1,0 +1,351 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 2fr;
+    grid-gap: 20px;
+}
+
+h2 {
+    background-color: #00a1c7;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Estilos para la sección 1 - Datos de Identificación */
+.identification-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaciado entre las filas */
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px; /* Espaciado entre los elementos */
+}
+
+.label {
+    font-weight: bold;
+    flex: 0 0 150px; /* Ajusta el ancho de la etiqueta */
+    margin-right: -44px; /* Espaciado entre la etiqueta y el valor */
+}
+
+.value {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Estilos para la sección 2 - Datos de Localización */
+.localization-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.coordinates-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.coordinates-table th, .coordinates-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.value input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.value.colspan-5 {
+    grid-column: span 5;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.value input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Flexbox específico para Inventario Anterior y Acto Administrativo */
+.inventory-acto-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Mayor espacio entre Inventario Anterior y Acto Administrativo */
+    margin-top: 10px;
+}
+
+.inventory-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio adecuado entre los elementos de Inventario Anterior */
+}
+
+.inventory-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaciado entre checkbox y el texto */
+}
+
+.inventory-container .label {
+    font-weight: bold;
+    margin-right: 10px; /* Aumenta el espacio entre la etiqueta y los checkbox */
+}
+
+.inventory-container input[type="checkbox"] {
+    margin-right: 5px; /* Espaciado adicional entre checkbox y texto */
+}
+
+.acto-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre etiqueta y campo de Acto Administrativo */
+}
+
+.acto-container .label {
+    font-weight: bold;
+    flex: 0 0 200px; /* Asegura que el campo de texto de Acto Administrativo se vea claro */
+}
+
+.acto-container input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+/* Estilos para la sección 3 - Época de Construcción */
+.epoch-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.epoch-table th, .epoch-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.epoch-table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Flexbox para las filas de Fecha y Autor */
+.epoch-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px; /* Aumentar el espaciado entre la etiqueta y el campo */
+    margin-top: 15px; /* Más espacio entre las filas */
+}
+
+.epoch-details .label {
+    font-weight: bold;
+    flex: 0 0 100px; /* Aumentar el ancho de las etiquetas */
+}
+
+.epoch-details input[type="text"] {
+    width: 250px; /* Ajustar el ancho del campo de texto */
+    padding: 8px; /* Aumentar el relleno dentro del campo */
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Estilos para la tabla de Tipología y Usos */
+.typology-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.typology-table th, .typology-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.typology-table th {
+    background-color: none; /* Se elimina el color de fondo */
+    color: black; /* Se asegura que el texto sea negro */
+}
+
+.typology-table td {
+    height: 40px; /* Ajuste para dar un tamaño fijo a las celdas */
+}
+
+.typology-table th[rowspan="2"] {
+    vertical-align: middle; /* Centrar texto verticalmente en las columnas con rowspan */
+}
+
+.typology-table th[colspan="2"] {
+    text-align: center;
+}
+
+.typology-table td:first-child {
+    text-align: left;
+    padding-left: 10px; /* Alinear el texto de la primera columna a la izquierda */
+}
+
+/* Estilos para la tabla de Régimen de Propiedad */
+.ownership-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.ownership-table th, .ownership-table td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+}
+
+.ownership-table th {
+    background-color: #fff;
+    color: black;
+}
+
+.ownership-table td input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Estilos para la tabla de Estados de Conservación */
+.conservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.conservation-table th, .conservation-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.conservation-table th {
+    color: black;
+}
+
+.conservation-table td {
+    height: 40px;
+}
+
+.conservation-table td input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Vertical text style for Estado General */
+.conservation-table td.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+/* Estilos para las otras secciones */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+}
+
+.item {
+    padding: 8px;
+    border: 1px solid #000;
+    text-align: left;
+}
+
+.item.colspan-5 {
+    grid-column: span 5;
+}
+
+.item.colspan-6 {
+    grid-column: span 6;
+}
+
+.epoch-table, .typology-table, .ownership-table, .conservation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.epoch-table th, .epoch-table td, .typology-table td, .ownership-table td, .conservation-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.epoch-table th, .epoch-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
