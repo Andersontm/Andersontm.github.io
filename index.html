@@ -1,108 +1,418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Gestiòn de Proyectos</title>
+    <title>Formulario de Datos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <header>
-        <div>
-            <img src="/src/img/logocodebytes.png" alt="" width="55" height="44" >
-        </div>
-        <div class="tituloH1">
-            <h1>CodeBytes</h1>
-        </div>
-    </header>
+    <button id="generate-pdf">Generar PDF</button>
+    <div class="container">
+        <div class="top-row">
+            <div class="left-column">
+                <div class="section section-1">
+                    <h2>1. DATOS DE IDENTIFICACIÓN</h2>
+                    <div class="identification-container">
+                        <div class="row">
+                            <div class="label">Denominación:</div>
+                            <div class="value">
+                                <input type="text" name="denominacion" placeholder="Ingrese denominación">
+                            </div>
+                            <div class="label">Registro N°:</div>
+                            <div class="value">
+                                <input type="text" name="registro" placeholder="Ingrese número de registro">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Clave catastral:</div>
+                            <div class="value">
+                                <input type="text" name="clave_catastral" placeholder="Ingrese clave catastral">
+                            </div>
+                            <div class="label">Nombre propietario:</div>
+                            <div class="value">
+                                <input type="text" name="nombre_propietario" placeholder="Ingrese nombre del propietario">
+                            </div>
+                        </div>
+                    </div>
+                </div>                             
 
-    <section class="main-container">
-        <div class="main-content container">
-            <h1>Portafolio Gestión de Proyecto</h1>
-            <h2>- Pet Connection - </h2>
-            <p>En este apartado encontrarás toda la documentación referente al proyecto de Pet Connection.</p>
-        </div>
-    </section>
+                <div class="section section-2">
+                    <h2>2. DATOS DE LOCALIZACIÓN</h2>
+                    <div class="localization-container">
+                        <div class="row">
+                            <div class="label">Provincia:</div>
+                            <div class="value">
+                                <input type="text" name="provincia" placeholder="Ingrese provincia">
+                            </div>
+                            <div class="label">Cantón:</div>
+                            <div class="value">
+                                <input type="text" name="canton" placeholder="Ingrese cantón">
+                            </div>
+                            <div class="label">Ciudad:</div>
+                            <div class="value">
+                                <input type="text" name="ciudad" placeholder="Ingrese ciudad">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Parroquia:</div>
+                            <div class="value">
+                                <input type="text" name="parroquia" placeholder="Ingrese parroquia">
+                            </div>
+                            <div class="label">Urbana:</div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="urbana" value="si">
+                            </div>
+                            <div class="label">Rural:</div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="rural" value="si">
+                            </div>
+                            <div class="label">Mz:</div>
+                            <div class="value">
+                                <input type="text" name="mz" placeholder="Ingrese Mz" style="width: 100%;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Calle principal:</div>
+                            <div class="value">
+                                <input type="text" name="calle_principal" placeholder="Ingrese calle principal">
+                            </div>
+                            <div class="label">N°:</div>
+                            <div class="value">
+                                <input type="text" name="numero" placeholder="Ingrese número">
+                            </div>
+                            <div class="label">Intersección:</div>
+                            <div class="value">
+                                <input type="text" name="interseccion" placeholder="Ingrese intersección">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Recinto:</div>
+                            <div class="value">
+                                <input type="text" name="recinto" placeholder="Ingrese recinto">
+                            </div>
+                            <div class="label">Comunidad:</div>
+                            <div class="value">
+                                <input type="text" name="comunidad" placeholder="Ingrese comunidad">
+                            </div>
+                            <div class="label">Sitio:</div>
+                            <div class="value">
+                                <input type="text" name="sitio" placeholder="Ingrese sitio">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Coordenadas WGS84</div>
+                            <div class="value colspan-5">
+                                <table class="coordinates-table">
+                                    <tr>
+                                        <th>Norte</th>
+                                        <th>Este</th>
+                                        <th>Altura</th>
+                                        <th>Zona</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="norte1" placeholder="Ingrese coordenada norte"></td>
+                                        <td><input type="text" name="este1" placeholder="Ingrese coordenada este"></td>
+                                        <td><input type="text" name="altura1" placeholder="Ingrese altura"></td>
+                                        <td><input type="text" name="zona1" placeholder="Ingrese zona"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="norte2" placeholder="Ingrese coordenada norte"></td>
+                                        <td><input type="text" name="este2" placeholder="Ingrese coordenada este"></td>
+                                        <td><input type="text" name="altura2" placeholder="Ingrese altura"></td>
+                                        <td><input type="text" name="zona2" placeholder="Ingrese zona"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row inventory-acto-container">
+                            <div class="inventory-container">
+                                <div class="label">Inventario Anterior:</div>
+                                <div class="inventory-checkbox">
+                                    <input type="checkbox" name="inventario" value="si"> <span>Sí</span>
+                                </div>
+                                <div class="inventory-checkbox">
+                                    <input type="checkbox" name="inventario" value="no"> <span>No</span>
+                                </div>
+                            </div>
+                            <div class="acto-container">
+                                <div class="label">Acto Administrativo:</div>
+                                <input type="text" name="acto_administrativo" placeholder="Ingrese acto administrativo">
+                            </div>
+                        </div>                                              
+                    </div>
+                </div>                              
+            </div>
 
-    <section class="general-container container" >
-        <div>
-            <h2>Integrantes</h2>
-            <img src="src/img/integrantes.png" alt="Imagen de Integrantes" width="55" height="55">
-            <p>Anderson Tufiño (6807)</p>
-            <p>Marlon Medina (6827)</p>
-            <p>Erik Quisnia (6838)</p>
-            <p>Gabriel Vallejo (6911)</p>
-            <p>Josue Orozco (6781)</p>
-        </div>
-        <div class="container">
-            <h2>Producto</h2>
-            <img src="src/img/petConnection.jpg" alt="Imagen del Producto" width="160" height="140">
-            <p>Pet Connection</p>
-        </div>
-        <div class="container">
-            <h2>Cierre de Proyecto</h2>
-            <img src="src/img/proyect.png" alt="Imagen de Cierre de Proyecto" width="160" height="140">
-            <p>Riobamba, Lunes 10 Julio de 2023</p>
+            <div class="section section-3">
+                <h2>3. ÉPOCA DE CONSTRUCCIÓN</h2>
+                <div class="grid-container">
+                    <div class="item colspan-6">
+                        <table class="epoch-table">
+                            <tr>
+                                <th>Siglo</th>
+                                <th>I</th>
+                                <th>II</th>
+                                <th>III</th>
+                                <th>IV</th>
+                            </tr>
+                            <tr>
+                                <td>XVI (1500-1599):</td>
+                                <td><input type="checkbox" name="siglo_xvi_i"></td>
+                                <td><input type="checkbox" name="siglo_xvi_ii"></td>
+                                <td><input type="checkbox" name="siglo_xvi_iii"></td>
+                                <td><input type="checkbox" name="siglo_xvi_iv"></td>
+                            </tr>
+                            <tr>
+                                <td>XVII (1600-1699):</td>
+                                <td><input type="checkbox" name="siglo_xvii_i"></td>
+                                <td><input type="checkbox" name="siglo_xvii_ii"></td>
+                                <td><input type="checkbox" name="siglo_xvii_iii"></td>
+                                <td><input type="checkbox" name="siglo_xvii_iv"></td>
+                            </tr>
+                            <tr>
+                                <td>XVIII (1700-1799):</td>
+                                <td><input type="checkbox" name="siglo_xviii_i"></td>
+                                <td><input type="checkbox" name="siglo_xviii_ii"></td>
+                                <td><input type="checkbox" name="siglo_xviii_iii"></td>
+                                <td><input type="checkbox" name="siglo_xviii_iv"></td>
+                            </tr>
+                            <tr>
+                                <td>XIX (1800-1899):</td>
+                                <td><input type="checkbox" name="siglo_xix_i"></td>
+                                <td><input type="checkbox" name="siglo_xix_ii"></td>
+                                <td><input type="checkbox" name="siglo_xix_iii"></td>
+                                <td><input type="checkbox" name="siglo_xix_iv"></td>
+                            </tr>
+                            <tr>
+                                <td>XX (1900-1999):</td>
+                                <td><input type="checkbox" name="siglo_xx_i"></td>
+                                <td><input type="checkbox" name="siglo_xx_ii"></td>
+                                <td><input type="checkbox" name="siglo_xx_iii"></td>
+                                <td><input type="checkbox" name="siglo_xx_iv" checked></td>
+                            </tr>
+                            <tr>
+                                <td>XXI (2000 adelante):</td>
+                                <td><input type="checkbox" name="siglo_xxi_i"></td>
+                                <td><input type="checkbox" name="siglo_xxi_ii"></td>
+                                <td><input type="checkbox" name="siglo_xxi_iii"></td>
+                                <td><input type="checkbox" name="siglo_xxi_iv"></td>
+                            </tr>
+                        </table>
+                        <div class="epoch-details">
+                            <div class="label">Fecha:</div>
+                            <input type="text" name="fecha_construccion" placeholder="Ingrese la fecha">
+                        </div>
+                        <div class="epoch-details">
+                            <div class="label">Autor:</div>
+                            <input type="text" name="autor_construccion" placeholder="Ingrese el autor">
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </div>
 
-    </section>
-    
-    <section class="main-container1">
-        <div class="main-content1 container">
-            <h2>DOCUMENTACION</h2>
-            <h3>- Pet Connection - </h3>
-        </div>
-        <div class="container1">
-            <section id="menu1">
-                <a class="alink" href="#menu1">Definición del Alcance</a>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/EXBapExQsIFFlvDmfvM6OMEB7JlXzFV58Vssn72PwbhCJg?e=CEqnpc"target="_blank">- Presentación del Equipo y Proyecto</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/ET03EfA6Wk5CiyLdJWAgH4kB3G58n8r9kp3iqL_czocXiw?e=k9lC1P "target="_blank">- Alcance del Proyecto</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:w:/g/personal/gabriel_vallejom_espoch_edu_ec/EYtFKcDiw89Ap5FKh2orL_gBJdxqLxm_LUhoE8Uqh8RExA?e=kUhTat "target="_blank">- Documento de Definición y alcance (Acta constitutiva)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:w:/g/personal/gabriel_vallejom_espoch_edu_ec/EVmxCK6GC6hInZHS8HgLQWEBNsZJkxD_3hkWVkBhzOs5uA?e=b13rAe"target="_blank">- Acuerdo de Trabajo (SOW)</a></p>
-            </section>
-    
-            <section id="menu2">
-                <a class="alink" href="#menu2">Planificación</a>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:w:/g/personal/gabriel_vallejom_espoch_edu_ec/EYXySUffG6lMgQrtmr29zbQB5H_gYoOPa5juSA9blIOp3w?e=ScxDkZ "target="_blank">- Plan de gestión del proyecto software (primera versión)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EuEnLs02J-tHk-E-4V1lkPsBs3iL0gojbH9KfrlBVml3lw?e=TNfYCD "target="_blank">- Estructura de descomposición de trabajo (WBS)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EjKdJFDz5BdItLIUEo3WNcQBouZDE5NKkTC_DkkBSjrMnA?e=cSxvw6 "target="_blank">- Roles y responsabilidades</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EjjWvqpquqRPgsEnFDnPwhoBjGlkc-dZumH_Enw7YJtHfg?e=Xl3CX0 "target="_blank">- Calendarización de tareas</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/Er_orvdsIQpCs_1Lbo-Nd6UB62qUcgngNxiqOgtOEr77rQ?e=jtP5wr "target="_blank">- Secuencia de tareas</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EllF7wsp85hOnyTh_GEMzgoBmfgoAZ6jdcyNkFOCxXdpRQ?e=E0DEOL "target="_blank">- Calendarización de tareas</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/Ev2aADaDmjdJtTPO5DqBpjQB1ueoQlBxmSq9FBnO8TK2Ow?e=TuNSLr "target="_blank">- Estimación de esfuerzo</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/ErSxtfukXBVEkBtaxIZ4KTIBMLDIs1j9Ihc-5NYFZ9yP_Q?e=2aqrcY "target="_blank">- Estimación de esfuerzo (modelo cocomo)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/Er66uaOfvrpDrJq2bYC3jhUB1nYO9XIYwSCpDQhnxjBAKw?e=b3QBvC "target="_blank">- Estimación de esfuerzo (puntos de función)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/ErOjOP-KscdFjleaRYd-7zAB56vwyeXTWYuTffohCrjJWQ?e=Gw4rBc "target="_blank">- Estimación de costo</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EkeRFHrc1OhLql4CSUnvtMoBgxKiZIxJUgi3Mo4F7KWa8w?e=onghy9 "target="_blank">- Plan de comunicación (documento)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/ErNHoYZh5gBImDHW3bmW5sgBdAt268dRrYmhyxAx2m2OiA?e=itPKum "target="_blank">- Plan de control de cambios</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/EqIQKsmZc9FPvh84tA9XwU8B3NwKmna6fe6a1zKd3VijQw?e=w8EqNx "target="_blank">- Plan de calidad</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:f:/g/personal/gabriel_vallejom_espoch_edu_ec/Ei5VhuSY7KlPqgAnIYoBlxABpKLVy5NdcGtFrM1qRUPJqQ?e=cXs4Ks "target="_blank">- Plan de gestión de riesgos</a></p>
-            </section>
-    
-            <section id="menu3">
-                <a class="alink" href="#menu3">Ejecución, Monitoreo y Control</a>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:x:/g/personal/gabriel_vallejom_espoch_edu_ec/EQxM8lBpQaJOoaaW8AOaHvIBUbqGqHGma6qiuLXYInJAZw?e=9dzboD "target="_blank">- Técnicas para seguimiento de avance del proyecto (valor ganado)</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/EZ37eUOTuHxHtQ9ycCWcZWwBIj6kMX-8Qt-hE856H4pF-g?e=vWWEGm "target="_blank">- Seguimiento y resolución de problemas, seguimiento y control de riesgos</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/ERb9lmorwHRNkF7LiKGpOTsBc4jb9X4qT95sy2TLVi74zA?e=6UwCao "target="_blank">- Control de cambios</a></p>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/EckJGB8zNR1HhO-oRkAy7YcBEUNQOiM3YU8munITIN777Q?e=Q58Tlu "target="_blank">- Replanificación del Proyecto de Software</a></p>
-            </section>
-    
-            <section id="menu4">
-                <a class="alink" href="#menu4">Cierre del Proyecto</a>
-                <p class="p1"><a href="https://liveespochedu-my.sharepoint.com/:b:/g/personal/gabriel_vallejom_espoch_edu_ec/EW4d97HBKqJDjuOqF2EEJ70BbqnnJqsXDjymWhA8ktKr-A?e=pTOW49 " target="_blank">- Cierre Proyecto</a></p>
-            </section>
-            
-    
-        </div>
-    </section>
+        <div class="bottom-row">
+            <div class="section section-4">
+                <h2>4. TIPOLOGÍA Y USOS</h2>
+                <div class="grid-container">
+                    <div class="item colspan-6">
+                        <table class="typology-table">
+                            <tr>
+                                <th rowspan="2">ARQUITECTURA</th>
+                                <th rowspan="2"></th>
+                                <th rowspan="2">CATEGORÍA</th>
+                                <th rowspan="2">SUBCATEGORÍA</th>
+                                <th colspan="2">USOS</th>
+                            </tr>
+                            <tr>
+                                <th>ORIGINAL</th>
+                                <th>ACTUAL</th>
+                            </tr>
+                            <tr>
+                                <td>MILITAR</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>CIVIL</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>RELIGIOSA</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>INSTITUCIONAL</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>COMERCIO</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>SERVICIOS</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>INDUSTRIAL</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>OTRO</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                            <tr>
+                                <td>VERNACULA</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder="Ingrese categoría"></td>
+                                <td><input type="text" placeholder="Ingrese subcategoría"></td>
+                                <td><input type="text" placeholder="Ingrese uso original"></td>
+                                <td><input type="text" placeholder="Ingrese uso actual"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>                                       
 
-    <footer class="container">
-        <img src="src/img/logocodebytes.png" width="33" height="22">
-        <span>
-            2023 CodeBytes &copy; Todos los derechos reservados.
-        </span>
-    </footer>
+            <div class="section section-5">
+                <h2>5. RÉGIMEN DE PROPIEDAD</h2>
+                <div class="grid-container">
+                    <div class="item colspan-6">
+                        <table class="ownership-table">
+                            <tr>
+                                <th colspan="2" rowspan="2">Propiedad</th>
+                                <th colspan="2">Ocupado por</th>
+                            </tr>
+                            <tr>
+                                <th>Propietario</th>
+                                <th>Otra Per/Inst</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="1">Público:</td>
+                                <td>Estatal</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Privado:</td>
+                                <td>Religioso</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Particular</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>            
 
+            <div class="section section-6">
+                <h2>6. ESTADOS DE CONSERVACIÓN</h2>
+                <div class="grid-container">
+                    <div class="item colspan-6">
+                        <table class="conservation-table">
+                            <tr>
+                                <th rowspan="2">Evaluación de la edificación</th>
+                                <th colspan="3">Estado</th>
+                                <th rowspan="2">Estado General</th>
+                            </tr>
+                            <tr>
+                                <th>Sólido</th>
+                                <th>Deteriorado</th>
+                                <th>Ruinoso</th>
+                            </tr>
+                            <tr>
+                                <td>Estructura</td>
+                                <td><input type="checkbox" class="estado" data-fila="1" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="1" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="1" data-estado="ruinoso"></td>
+                                <td rowspan="8" id="estado-general" class="vertical-text">Ruinoso</td>
+                            </tr>
+                            <tr>
+                                <td>Cubierta</td>
+                                <td><input type="checkbox" class="estado" data-fila="2" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="2" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="2" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Fachadas</td>
+                                <td><input type="checkbox" class="estado" data-fila="3" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="3" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="3" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Pisos -entrepisos</td>
+                                <td><input type="checkbox" class="estado" data-fila="4" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="4" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="4" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Acabados</td>
+                                <td><input type="checkbox" class="estado" data-fila="5" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="5" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="5" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Esp. Exteriores</td>
+                                <td><input type="checkbox" class="estado" data-fila="6" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="6" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="6" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Escaleras</td>
+                                <td><input type="checkbox" class="estado" data-fila="7" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="7" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="7" data-estado="ruinoso"></td>
+                            </tr>
+                            <tr>
+                                <td>Instalaciones</td>
+                                <td><input type="checkbox" class="estado" data-fila="8" data-estado="solido"></td>
+                                <td><input type="checkbox" class="estado" data-fila="8" data-estado="deteriorado"></td>
+                                <td><input type="checkbox" class="estado" data-fila="8" data-estado="ruinoso"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>                               
+        </div>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
